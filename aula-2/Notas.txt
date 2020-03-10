@@ -1,0 +1,83 @@
+HTML - Linguagem de Marcação
+
+As marcações são feitas por tags
+As tags definem como um conteúdo é exibido
+
+
+<HTML> Onde fica toda a página em HTML
+<HEADER> Cabeçalho 
+<BODY> Onde fica o conteúdo visível realmente no navegador
+
+Uma boa prática é sempre fechar as tags: </tag>
+
+Principais elementos:
+    <h1> até <h6> - para títulos
+    <p> - para parágrafos
+    <a> - elemento de âncora (usualmente utilizado para links) com o atributo href
+    <img> - utilizado para imagens (a imagem é um atributo do elemento) o SRC é o caminho do arquivo
+    <br> - tag para quebra de linha 
+
+Estilos são aplicados sobre as tags
+
+
+Tags de texto
+<b> negrito
+<strong> texto "importante" 
+<i> itálico 
+<em> texto "enfatizado"
+<mark> texto com Marcação
+<small> texto pequeno
+<del> texto tachado
+<ins> texto inserido
+<u> sublinhado
+<sub> texto subscrito
+<sup> texto sobrescrito
+
+Elemento de citação:
+<q> citação curta - coloca aspas
+<blockquote> com um link para a fonte, com o atributo 'cite'
+<abbr> elemento de abreviação, com o atibuto 'title'
+<bdo> elemento para inverter um texto, com o atributo dir
+
+Elementos para código fonte:
+
+<kbd> Exemplo de uma entrada do teclado
+<samp> Para exibir a saída de um comando
+<code> Para exibir um código fonte
+<pre> Diz para o navegador usar a formatação que está no arquivo
+<var> define uma varíavel
+
+Listas e Tabelas
+
+Listas:
+
+LISTAS NÃO ORDENADA
+    <ul> para listas não ordenadas
+        <li> cada item fica dentro desta tag
+    
+    Style do simbolo:
+        disc    - padrão
+        circle  - circulo nao sólido
+        square  - quadrado
+        none    - sem marcador
+
+    "list-style-type" - parâmetro para style
+
+LISTAS ORDENADA
+    <ol> elemento de lista ordenadas
+        <li> cada item fica dentro dessa tag
+
+    Style dos simbolos:
+        type = "1" - números
+        type = "A" - letras
+        type = "I" - romano
+
+LISTA DE DESCRIÇÃO
+    <dl> elementos formatada
+    <dt> Tipo
+    <dd> Descrição
+
+TABELAS
+    <table> Tabela
+    <tr> linhas
+    <th> header
