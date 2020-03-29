@@ -30,7 +30,7 @@
 
         fwrite($arq, $conteudo, strlen($conteudo)); //Grava o conteudo no arquivo
         fclose($arq);
+        header("refresh:5;url=dashboard.php?login");
         echo 'CADASTRO SALVO COM SUCESSO!';
-        header("refresh:5;url=dashboard.php?login"); 
     }
 ?>

@@ -2,7 +2,6 @@
 if(isset($_POST['voltar'])){
     header('Location: dashboard.php?login');
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -129,6 +128,12 @@ if(isset($_POST['voltar'])){
     }
     else{
         echo 'ERRO AO ABRIR ARQUIVO';
+        echo '<br>'
+        ?>
+        <form action="" method="POST">
+        <input type="submit" id="voltar" name="voltar" value="VOLTAR">
+        </form>
+        <?php
     }
 ?>
 </body>
