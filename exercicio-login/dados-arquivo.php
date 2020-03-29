@@ -1,3 +1,9 @@
+<?php
+if(isset($_POST['voltar'])){
+    header('Location: dashboard.php?login');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,15 +13,19 @@
 </head>
 <body>
 <?php
-    $nomeArquivo = $_POST['nome_arquivo'];
+    $nomeArquivo = strtoupper($_POST['nome_arquivo']);
     $composto = strpos($nomeArquivo, ' ');
 
     if($composto !== false){
         list ($nome, $sobrenome) = explode(" ", $nomeArquivo); //Faz um split no nome recebito
         $nomeArquivo = $nome."_".$sobrenome.".txt"; //Concatena com o underline e o .txt
     }
+    else{
+        $nomeArquivo .=".txt";
+    }
     //Verifica se o arquivo existe
     if(file_exists($nomeArquivo)){
+        global $nomeArquivo;
         $arq = file("$nomeArquivo");//Abre o arquivo em modo leitura
         ?>
         <fieldset>
@@ -119,12 +129,7 @@
     }
     else{
         echo 'ERRO AO ABRIR ARQUIVO';
-        header("refresh:3;url=dashboard.php?login"); 
     }
-    if(isset($_POST['voltar'])){
-        header('Location: dashboard.php?login');
-    }
-    
 ?>
 </body>
 </html>

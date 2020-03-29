@@ -1,5 +1,14 @@
+<?php
+if(!isset($_GET['login'])){
+    header('Location: index.php');
+}
+if(isset($_POST['logout'])){
+    header('Location: index.php');
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,19 +26,11 @@
 </body>
 </html>
 <?php
-    if(!isset($_GET['login'])){
-        header('Location: index.php');
-    }
-    
-    if(isset($_POST['cadastro'])){
-        include('cadastro.php');
-    }
+if(isset($_POST['cadastro'])){
+    include('cadastro.php');
+}
 
-    if(isset($_POST['busca'])){
-        include('arquivos.php');
-    }
-
-    if(isset($_POST['logout'])){
-        header('Location: index.php');
-    }
+if(isset($_POST['busca'])){
+    include('arquivos.php');
+}
 ?>
