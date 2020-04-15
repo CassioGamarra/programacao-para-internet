@@ -28,8 +28,8 @@
                         <label for="estadocivil">Estado Civil</label>
                         <select class="form-control" id="estadocivil" name="estadocivil" required> 
                             <option disabled selected>Selecione</option>
-                            <option>Solteiro</option>
-                            <option>Casado</option>
+                            <option value="Solteiro">Solteiro</option>
+                            <option value="Casado">Casado</option>
                         </select>
                         <br/>
                         <label for="cor">Cor favorita</label>
