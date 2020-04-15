@@ -4,8 +4,6 @@
 
     //Verifica a existência do cookie com o nome informado
     if(!isset($_COOKIE[$nomeCookie])){
-        include ("cadastro.php");//Exibe a página de cadastro
-
         //Se o botão cadastrar for pressionado
         if(isset($_POST['cadastrar'])){
             setcookie($nomeCookie."[nome]", $_POST['nome']);
@@ -18,6 +16,7 @@
                 window.location.href="index.php";
             </script>';
         }
+        include ("cadastro.php");//Exibe a página de cadastro
     }
     //Se o cookie existir
     else{
