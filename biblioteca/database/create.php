@@ -1,4 +1,5 @@
 <?php
+    
     function createDatabase(){
         $ip = "localhost"; //IP da máquina onde se encotra a base
         $usuario = "php_user"; //Usuario
@@ -8,42 +9,45 @@
 
         if($conn->connect_error) {
             die(
-                erro("Falha na conexão: " . $conn->connect_error, "index")//Caso ocorra uma falha
+                erro("Falha na conexão: " . $conn->connect_error)//Caso ocorra uma falha
             );
-        }
-        sucesso("Conexão realizada com sucesso!", "index");
+        }else{
+            //Cria a base
+            $sql = "create database biblioteca";
 
-        //Cria a base
-        $sql = "create database biblioteca";
-
-        if($conn->query($sql) === TRUE){
-            sucesso("Base de dados criada com sucesso!");
-            $sql1 = "USE biblioteca"; //Seleciona a base
-            //Cria a tabela
-            $sql2 = "create table livro(
-                        id INT UNSIGNED AUTO_INCREMENT NOT NULL,
-                        titulo VARCHAR(200),
-                        autor VARCHAR(100),
-                        ano INT UNSIGNED,
-                        paginas  INT UNSIGNED,
-                        genero VARCHAR(30),
-                        classificacao VARCHAR(50),
-                        PRIMARY KEY(id)
-                    )";
-            if($conn->query($sql1) === TRUE){
-                if($conn->query($sql2) === TRUE){
-                    sucesso("Tabela criada com sucesso!", "index");
+            if($conn->query($sql) === TRUE){
+                $sql1 = "USE biblioteca"; //Seleciona a base
+                //Cria a tabela
+                $sql2 = "create table livro(
+                            id INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                            titulo VARCHAR(200),
+                            autor VARCHAR(100),
+                            ano INT UNSIGNED,
+                            paginas  INT UNSIGNED,
+                            genero VARCHAR(30),
+                            classificacao VARCHAR(50),
+                            PRIMARY KEY(id)
+                        )";
+                if($conn->query($sql1) === TRUE){
+                    if($conn->query($sql2) === TRUE){
+                        echo "
+                            <!--Mensagem de erro em HTML dentro do PHP-->
+                            <head>
+                                <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">
+                            </head>
+                            <div class=\"alert alert-success text-center\" role=\"alert\">Tabelas criadas com sucesso!</div>
+                        ";
+                    }
+                }
+                else{
+                    erro("Erro na criação tabela: ".$conn->error);
                 }
             }
             else{
-                erro("Erro na criação tabela: ".$conn->error, "index");
+                erro("Erro na criação da base de dados: ".$conn->error);
             }
-        }
-        else{
-            erro("Erro na criação da base de dados: ".$conn->error, "index");
-        }
 
+        }
         $conn->close();
     }
-    createDatabase();
 ?>

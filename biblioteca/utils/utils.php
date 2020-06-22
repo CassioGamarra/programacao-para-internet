@@ -1,6 +1,5 @@
 <?php
-    function erro($msg, $url){
-        header("refresh:3; url=$url.php");
+    function erro($msg){
         echo "
             <!--Mensagem de erro em HTML dentro do PHP-->
             <head>
@@ -8,7 +7,6 @@
             </head>
             <div class=\"alert alert-danger text-center\" role=\"alert\">Erro: $msg</div>
         ";
-        header("refresh:3; url=$url.php");
     }
     //Caso o login ocorra com sucesso
     function sucesso($msg, $url){

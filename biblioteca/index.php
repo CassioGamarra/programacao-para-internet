@@ -1,5 +1,6 @@
 <?php
     include 'functions/functions.php';
+    include 'utils/utils.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

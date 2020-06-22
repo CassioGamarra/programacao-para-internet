@@ -1,25 +1,23 @@
 <?php
     include 'conn.php';
+    include 'create.php';
 
     function allBooks(){
         $conn = conn();
         if($conn->connect_error) {
-            die(
-                erro("Falha na conexão: " . $conn->connect_error)//Caso ocorra uma falha
-            );
+            createDatabase();
+        }else{
+            $sql = "select * from livro";
+            $result = $conn->query($sql);
+            $conn->close();
+            return $result;
         }
-        $sql = "select * from livro";
-        $result = $conn->query($sql);
-        $conn->close();
-        return $result;
     }
 
     function getBook($id){
         $conn = conn();
         if($conn->connect_error) {
-            die(
-                erro("Falha na conexão: " . $conn->connect_error)//Caso ocorra uma falha
-            );
+            die("Falha na conexão: " . $conn->connect_error);
         }
         $sql = "select * from livro where id = $id";
         $result = $conn->query($sql);
@@ -35,7 +33,7 @@
         $conn = conn();
         if($conn->connect_error) {
             die(
-                erro("Falha na conexão: " . $conn->connect_error, "index")//Caso ocorra uma falha
+                erro("Falha na conexão: " . $conn->connect_error)//Caso ocorra uma falha
             );
         }
         
@@ -59,7 +57,7 @@
             $livro->setClassificacao('');
         }
         else{
-            erro("Erro ao cadastrar: ".$conn->error, "index");
+            erro("Erro ao cadastrar: ".$conn->error);
         }
         $conn->close();
     }
@@ -68,7 +66,7 @@
         $conn = conn();
         if($conn->connect_error) {
             die(
-                erro("Falha na conexão: " . $conn->connect_error, "index")//Caso ocorra uma falha
+                erro("Falha na conexão: " . $conn->connect_error)//Caso ocorra uma falha
             );
         }
         
@@ -93,7 +91,7 @@
             $livro->setClassificacao('');
         }
         else{
-            erro("Erro ao cadastrar: ".$conn->error, "index");
+            erro("Erro ao cadastrar: ".$conn->error);
         }
         $conn->close();
     }

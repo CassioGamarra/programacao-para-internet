@@ -2,44 +2,45 @@
     function dashboard(){
         include './database/crud.php';
 
-        $result = allBooks();
-
-        if($result === false){
-            erro("nenhum livro cadastrado...");
-        }
-        else{
-            if($result->num_rows > 0){
-                echo "<div class=\"row row-cols-1 row-cols-md-3\">";
-                while($row = $result->fetch_assoc()){
-                    echo "
-                    <div class=\"card\" style=\"max-width: 35rem;\">
-                        <div class=\"row no-gutters\">
-                            <div class=\"col-md-4\">
-                                <img src=\"./imagens/livro.png\" class=\"card-img\" alt=\"Título: ".$row['titulo']."\">
-                            </div>
-                            <div class=\"col-md-8\">
-                                <div class=\"card-body\">
-                                    <h5 class=\"card-title\">".$row['titulo']."</h5>
-                                    <p class=\"card-text\">
-                                    Autor: ".$row['autor']."
-                                    <br/>
-                                    Lançamento: ".$row['ano']."
-                                    <br/>
-                                    Páginas: ".$row['paginas']."
-                                    <br/>
-                                    Gênero: ".$row['genero']."
-                                    <br/>   
-                                    Classificação: ".$row['classificacao']."
-                                    </p>
-                                    <a href='atualizar.php?id=".$row['id']."' class=\"btn btn-primary\">Alterar</a>
-                                    <a href=\"#\" class=\"btn btn-primary\">Excluir</a>
+        if(allBooks()){
+            $result = allBooks();
+            if($result->num_rows == 0){
+                erro("nenhum livro cadastrado...");
+            }
+            else{
+                if($result->num_rows > 0){
+                    echo "<div class=\"row row-cols-1 row-cols-md-3\">";
+                    while($row = $result->fetch_assoc()){
+                        echo "
+                        <div class=\"card\" style=\"max-width: 35rem;\">
+                            <div class=\"row no-gutters\">
+                                <div class=\"col-md-4\">
+                                    <img src=\"./imagens/livro.png\" class=\"card-img\" alt=\"Título: ".$row['titulo']."\">
+                                </div>
+                                <div class=\"col-md-8\">
+                                    <div class=\"card-body\">
+                                        <h5 class=\"card-title\">".$row['titulo']."</h5>
+                                        <p class=\"card-text\">
+                                        Autor: ".$row['autor']."
+                                        <br/>
+                                        Lançamento: ".$row['ano']."
+                                        <br/>
+                                        Páginas: ".$row['paginas']."
+                                        <br/>
+                                        Gênero: ".$row['genero']."
+                                        <br/>   
+                                        Classificação: ".$row['classificacao']."
+                                        </p>
+                                        <a href='atualizar.php?id=".$row['id']."' class=\"btn btn-primary\">Alterar</a>
+                                        <a href=\"#\" class=\"btn btn-primary\">Excluir</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    ";
+                        ";
+                    }
+                    echo "</div>";
                 }
-                echo "</div>";
             }
         }
     }
