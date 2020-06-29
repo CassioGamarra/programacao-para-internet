@@ -1,7 +1,7 @@
 <?php
-    include '../classes/livro.php';
-    include '../database/crud.php';
-    include '../utils/utils.php';
+    include_once '../classes/livro.php';
+    include_once '../database/crud.php';
+    include_once '../utils/utils.php';
 
     $livro = new Livro();
     $livro->setTitulo($_POST['titulo']);

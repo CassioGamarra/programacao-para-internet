@@ -1,7 +1,6 @@
 <?php
-    include 'conn.php';
-    include 'create.php';
-
+    include_once 'conn.php';
+    include_once 'create.php';
     function allBooks(){
         $conn = conn();
         if($conn->connect_error) {
@@ -25,8 +24,16 @@
         return $result;
     }
 
-    function searchBook(){
-
+    function searchBooks($title){
+        $conn = conn();
+        if($conn->connect_error) {
+            createDatabase();
+        }else{
+            $sql = "select * from livro where titulo like '%$title%'";
+            $result = $conn->query($sql);
+            $conn->close();
+            return $result;
+        }
     }
 
     function insertBook($livro){
@@ -91,12 +98,27 @@
             $livro->setClassificacao('');
         }
         else{
-            erro("Erro ao cadastrar: ".$conn->error);
+            erro("Erro ao atualizar: ".$conn->error);
         }
         $conn->close();
     }
 
-    function deleteBook(){
-
+    function deleteBook($id, $titulo){
+        include_once './utils/utils.php';
+        $conn = conn();
+        if($conn->connect_error) {
+            die(
+                erro("Falha na conexão: " . $conn->connect_error)//Caso ocorra uma falha
+            );
+        }
+        
+        $sql = "delete from livro where id = $id";
+        if ($conn->query($sql) === true){
+            sucesso("O livro ".$titulo." foi excluído com sucesso!", "index");
+        }
+        else {
+            erro("Erro ao deletar: ".$conn->error);
+        }
+        $conn->close();
     }
 ?>

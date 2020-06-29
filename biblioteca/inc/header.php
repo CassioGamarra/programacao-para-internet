@@ -1,3 +1,7 @@
+<?php
+    include_once 'functions/functions.php';
+    include_once 'utils/utils.php';
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.php">Biblioteca Comunitária</a>
@@ -11,8 +15,10 @@
                 </button>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" id="buscarLivro">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="buscarLivros()">Buscar</button>
+                    <p>&nbsp</p>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="limparBusca()">Limpar Busca</button>
                 </form>
             </div>
         </div>
